@@ -1,0 +1,1011 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abhimaneu R Nair | Software Developer & Tester</title>
+    <style>
+        /* Corporate Tech Palette */
+        :root {
+            --bg-main: #0b0f19;
+            --bg-card: #111827;
+            --bg-card-hover: #1f2937;
+            --nav-bg: rgba(11, 15, 25, 0.85);
+            --border-color: #1f2937;
+            --border-glow: #374151;
+
+            /* Accent Palette */
+            --accent-blue: #38bdf8;
+            --accent-green: #34d399;
+            --accent-purple: #c084fc;
+            --accent-orange: #fbbf24;
+
+            --text-main: #f3f4f6;
+            --text-muted: #9ca3af;
+            --text-subtle: #6b7280;
+
+            --font-body: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            font-family: var(--font-body);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* Navigation */
+        nav {
+            position: sticky;
+            top: 0;
+            background: var(--nav-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 100;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-family: var(--font-mono);
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--accent-orange);
+            letter-spacing: -0.5px;
+        }
+
+        .logo span {
+            color: var(--text-main);
+        }
+
+        .logo span1 {
+            color: var(--accent-green);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 1.8rem;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-blue);
+        }
+
+        /* Sections */
+        section {
+            padding: 5rem 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .section-title {
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 2.5rem;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            letter-spacing: -0.5px;
+        }
+
+        .section-title::before {
+            content: '';
+            display: inline-block;
+            width: 4px;
+            height: 1.5rem;
+            background: var(--accent-blue);
+            border-radius: 2px;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 6rem 0 5rem 0;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(52, 211, 153, 0.1);
+            border: 1px solid rgba(52, 211, 153, 0.3);
+            color: var(--accent-green);
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            padding: 0.35rem 0.8rem;
+            border-radius: 20px;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-badge .pulse-dot {
+            width: 8px;
+            height: 8px;
+            background-color: var(--accent-green);
+            border-radius: 50%;
+            box-shadow: 0 0 8px var(--accent-green);
+        }
+
+        .hero-h1 {
+            font-size: 3.2rem;
+            font-weight: 800;
+            color: #ffffff;
+            line-height: 1.15;
+            letter-spacing: -1px;
+            margin-bottom: 0.75rem;
+        }
+
+        .hero-subtitle {
+            font-size: 1.35rem;
+            color: var(--accent-blue);
+            font-weight: 500;
+            margin-bottom: 1.25rem;
+        }
+
+        .hero-description {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            max-width: 680px;
+            margin-bottom: 2rem;
+            line-height: 1.7;
+        }
+
+        /* Buttons */
+        .btn-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+            font-weight: 600;
+            background: rgba(52, 211, 153, 0.1);
+            color: var(--accent-green);
+            border: 1px solid var(--accent-green);
+            padding: 0.7rem 1.4rem;
+            border-radius: 6px;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: var(--accent-green);
+            color: var(--bg-main);
+            box-shadow: 0 0 16px rgba(52, 211, 153, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .btn1 {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+            font-weight: 600;
+            background: rgba(192, 132, 252, 0.1);
+            color: var(--accent-purple);
+            border: 1px solid var(--accent-purple);
+            padding: 0.7rem 1.4rem;
+            border-radius: 6px;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+
+        .btn1:hover {
+            background: var(--accent-purple);
+            color: var(--bg-main);
+            box-shadow: 0 0 16px rgba(192, 132, 252, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .btn2 {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+            font-weight: 600;
+            background: rgba(251, 191, 36, 0.1);
+            color: var(--accent-orange);
+            border: 1px solid var(--accent-orange);
+            padding: 0.7rem 1.4rem;
+            border-radius: 6px;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+
+        .btn2:hover {
+            background: var(--accent-orange);
+            color: var(--bg-main);
+            box-shadow: 0 0 16px rgba(251, 191, 36, 0.3);
+            transform: translateY(-2px);
+        }
+
+        /* Grids & Cards */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1.75rem;
+            transition: all 0.25s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+        }
+
+        .card.clickable {
+            cursor: pointer;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            border-color: var(--border-glow);
+            background: var(--bg-card-hover);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .card h3 {
+            color: #ffffff;
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+        }
+
+        .card .subtitle {
+            color: var(--accent-blue);
+            font-size: 0.88rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        .card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        /* Status Badges */
+        .status-pill {
+            display: inline-block;
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            padding: 0.25rem 0.6rem;
+            border-radius: 4px;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .status-pill.active {
+            background: rgba(52, 211, 153, 0.12);
+            color: var(--accent-green);
+            border: 1px solid rgba(52, 211, 153, 0.3);
+        }
+
+        .status-pill.completed {
+            background: rgba(56, 189, 248, 0.12);
+            color: var(--accent-blue);
+            border: 1px solid rgba(56, 189, 248, 0.3);
+        }
+
+        .click-hint {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--accent-blue);
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+            margin-top: 0.5rem;
+            user-select: none;
+        }
+
+        /* Collapsible Course Details Drawer */
+        .course-details {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, margin-top 0.3s ease;
+            background: rgba(11, 15, 25, 0.6);
+            border-radius: 6px;
+            border: 0px solid var(--border-color);
+        }
+
+        .course-details.open {
+            max-height: 400px;
+            margin-top: 1rem;
+            padding: 1rem;
+            border-width: 1px;
+        }
+
+        .course-details h4 {
+            font-size: 0.85rem;
+            font-family: var(--font-mono);
+            color: var(--accent-green);
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.5px;
+        }
+
+        .course-details ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .course-details ul li {
+            color: var(--text-muted);
+            font-size: 0.88rem;
+            position: relative;
+            padding-left: 1.2rem;
+            margin-bottom: 0.4rem;
+        }
+
+        .course-details ul li::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: var(--accent-blue);
+        }
+
+        .institution-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            color: var(--accent-green);
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 1.2rem;
+            transition: opacity 0.2s;
+        }
+
+        .institution-link:hover {
+            text-decoration: underline;
+            opacity: 0.85;
+        }
+
+        /* Skills Badges & Interactive Panel */
+        .skills-flex {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .badge {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            padding: 0.5rem 0.9rem;
+            border-radius: 6px;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .badge:hover {
+            border-color: var(--border-glow);
+            transform: translateY(-2px);
+        }
+
+        .badge.dev {
+            border-color: rgba(56, 189, 248, 0.3);
+            color: var(--accent-blue);
+            background: rgba(56, 189, 248, 0.05);
+        }
+
+        .badge.dev.active,
+        .badge.dev:hover {
+            background: rgba(56, 189, 248, 0.2);
+            border-color: var(--accent-blue);
+            box-shadow: 0 0 10px rgba(56, 189, 248, 0.2);
+        }
+
+        .badge.test {
+            border-color: rgba(52, 211, 153, 0.3);
+            color: var(--accent-green);
+            background: rgba(52, 211, 153, 0.05);
+        }
+
+        .badge.test.active,
+        .badge.test:hover {
+            background: rgba(52, 211, 153, 0.2);
+            border-color: var(--accent-green);
+            box-shadow: 0 0 10px rgba(52, 211, 153, 0.2);
+        }
+
+        /* Dynamic Skill Detail Display Panel */
+        .tech-detail-panel {
+            margin-top: 2rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border-glow);
+            border-left: 4px solid var(--accent-blue);
+            border-radius: 8px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .tech-detail-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .tech-detail-title {
+            font-family: var(--font-mono);
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--accent-blue);
+        }
+
+        .tech-detail-category {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            padding: 0.2rem 0.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 4px;
+            color: var(--text-muted);
+        }
+
+        .tech-detail-desc {
+            color: var(--text-main);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+
+        .tag {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            background: rgba(56, 189, 248, 0.1);
+            color: var(--accent-blue);
+            padding: 0.25rem 0.6rem;
+            border-radius: 4px;
+        }
+
+        /* Project Screenshot Preview */
+        .project-screenshot {
+            width: 100%;
+            border-radius: 6px;
+            overflow: hidden;
+            margin-bottom: 1.25rem;
+            border: 1px solid var(--border-color);
+            position: relative;
+            aspect-ratio: 16 / 9;
+            background: var(--bg-main);
+        }
+
+        .project-screenshot img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top;
+            display: block;
+            transition: transform 0.4s ease;
+            filter: brightness(0.9);
+        }
+
+        .card:hover .project-screenshot img {
+            transform: scale(1.04);
+            filter: brightness(1);
+        }
+
+        .project-screenshot-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, transparent 55%, rgba(11, 15, 25, 0.7) 100%);
+            pointer-events: none;
+        }
+
+        .live-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            color: var(--accent-orange);
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 1rem;
+            border: 1px solid rgba(251, 191, 36, 0.35);
+            background: rgba(251, 191, 36, 0.07);
+            padding: 0.35rem 0.75rem;
+            border-radius: 5px;
+            transition: all 0.2s ease;
+        }
+
+        .live-link:hover {
+            background: var(--accent-orange);
+            color: var(--bg-main);
+            box-shadow: 0 0 14px rgba(251, 191, 36, 0.3);
+            transform: translateY(-1px);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2.5rem 0;
+            color: var(--text-subtle);
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero-h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .nav-links {
+                font-size: 0.85rem;
+                gap: 1rem;
+            }
+
+            section {
+                padding: 3.5rem 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="container nav-container">
+            <div class="logo">Abhimaneu<span> R </span>
+                <span1> Nair</span1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#academics">Academics</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#works">Works</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+
+        <!-- Hero / About Section -->
+        <section id="about" class="hero">
+            <div class="hero-badge">
+                <span class="pulse-dot"></span> MCA Student & Software Engineer
+            </div>
+            <h1 class="hero-h1">Abhimaneu R Nair</h1>
+            <div class="hero-subtitle">Software Developer and Tester (SDET)</div>
+            <p class="hero-description">
+                Specializing in full-stack software development and quality engineering. I build robust applications
+                with structured backends, optimized databases, and comprehensive automated/manual testing coverage to
+                ensure reliable production delivery.
+            </p>
+            <div class="btn-group">
+                <a href="#works" class="btn">Explore Works & Projects</a>
+                <a href="#contact" class="btn1">Get In Touch</a>
+            </div>
+        </section>
+
+        <!-- Academics Section -->
+        <section id="academics">
+            <h2 class="section-title">Academic Qualifications</h2>
+            <p style="color: var(--text-muted); margin-bottom: 1.5rem; font-size: 0.95rem;">
+                Click on any degree card below to toggle detailed coursework & technical focus.
+            </p>
+            <div class="grid">
+                <!-- MCA Card -->
+                <div class="card clickable" onclick="toggleCourse('mca-details', this)">
+                    <div>
+                        <span class="status-pill active">PURSUING</span>
+                        <h3>Master of Computer Applications (MCA)</h3>
+                        <div class="subtitle">MACFAST (Mar Athanasios College for Advanced Studies Tiruvalla)</div>
+                        <p>Advanced study in software engineering, enterprise application architecture, database
+                            systems, testing methodologies, and algorithmic logic.</p>
+
+                        <div class="click-hint">
+                            <span class="chevron">▼</span> <span class="hint-text">Click for course syllabus &
+                                modules</span>
+                        </div>
+
+                        <!-- Expandable Content -->
+                        <div id="mca-details" class="course-details">
+                            <h4>Key Coursework & Focus Areas</h4>
+                            <ul>
+                                <li><strong>Enterprise Application Architecture:</strong> C#, .NET Framework, MVC
+                                    architecture, and backend service design.</li>
+                                <li><strong>Software Testing & QA:</strong> Automated test suites, STLC execution, test
+                                    case design, and defect tracking.</li>
+                                <li><strong>Advanced Database Management:</strong> Complex SQL query optimization,
+                                    relational indexing, and data normalization.</li>
+                                <li><strong>Algorithmic Logic & AI Basics:</strong> First-Order Predicate Logic, CNF
+                                    reduction, and rule-based systems.</li>
+                                <li><strong>Cyber Security & Strategic Management:</strong> Security auditing, threat
+                                    modeling, and strategic process planning.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <a href="https://macfast.in" target="_blank" rel="noopener noreferrer" class="institution-link"
+                        onclick="event.stopPropagation();">
+                        Visit Institution Website ↗
+                    </a>
+                </div>
+
+                <!-- BCA Card -->
+                <div class="card clickable" onclick="toggleCourse('bca-details', this)">
+                    <div>
+                        <span class="status-pill completed">COMPLETED</span>
+                        <h3>Bachelor of Computer Applications (BCA)</h3>
+                        <div class="subtitle">University Institute of Technology (UIT), Adoor</div>
+                        <p>Affiliated with the University of Kerala. Built foundational expertise in object-oriented
+                            programming, data structures, relational databases, and core web technologies.</p>
+
+                        <div class="click-hint">
+                            <span class="chevron">▼</span> <span class="hint-text">Click for course syllabus &
+                                modules</span>
+                        </div>
+
+                        <!-- Expandable Content -->
+                        <div id="bca-details" class="course-details">
+                            <h4>Foundational Coursework & Modules</h4>
+                            <ul>
+                                <li><strong>Object-Oriented Programming:</strong> Java & C++ core principles, memory
+                                    management, and OOP paradigm design.</li>
+                                <li><strong>Data Structures & Algorithms:</strong> Arrays, linked lists, stacks, queues,
+                                    trees, and algorithmic sorting.</li>
+                                <li><strong>Relational Database Management (RDBMS):</strong> SQL query building, ER
+                                    diagram modeling, and table normalizations.</li>
+                                <li><strong>Web Technology Fundamentals:</strong> Structured HTML5, CSS3 layout styling,
+                                    and client-side JavaScript scripting.</li>
+                                <li><strong>Operating Systems & Networking:</strong> Process management, TCP/IP
+                                    networking models, and system administration basics.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <a href="https://uitadoor.com" target="_blank" rel="noopener noreferrer" class="institution-link"
+                        onclick="event.stopPropagation();">
+                        Visit Institution Website ↗
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills">
+            <h2 class="section-title">Technical Expertise</h2>
+            <p style="color: var(--text-muted); margin-bottom: 1.5rem; font-size: 0.95rem;">
+                Click any badge below to view specific applications, tools, and experience breakdown.
+            </p>
+
+            <h3 style="color: var(--accent-blue); margin-bottom: 1rem; font-size: 1.05rem; font-weight: 600;">Software
+                Development</h3>
+            <div class="skills-flex" style="margin-bottom: 2rem;">
+                <span class="badge dev active" onclick="showTechDetail('csharp', this)">C# / .NET</span>
+                <span class="badge dev" onclick="showTechDetail('java', this)">Java</span>
+                <span class="badge dev" onclick="showTechDetail('python', this)">Python</span>
+                <span class="badge dev" onclick="showTechDetail('webdev', this)">HTML5 / CSS3 / JavaScript</span>
+                <span class="badge dev" onclick="showTechDetail('sql', this)">SQL & Database Management</span>
+                <span class="badge dev" onclick="showTechDetail('oop', this)">Object-Oriented Programming (OOP)</span>
+                <span class="badge dev" onclick="showTechDetail('git', this)">Git & Version Control</span>
+            </div>
+
+            <h3 style="color: var(--accent-green); margin-bottom: 1rem; font-size: 1.05rem; font-weight: 600;">Quality
+                Engineering & Testing</h3>
+            <div class="skills-flex">
+                <span class="badge test" onclick="showTechDetail('stlc', this)">Software Testing Life Cycle
+                    (STLC)</span>
+                <span class="badge test" onclick="showTechDetail('automation', this)">Test Automation</span>
+                <span class="badge test" onclick="showTechDetail('manual', this)">Manual & Functional Testing</span>
+                <span class="badge test" onclick="showTechDetail('testcases', this)">Test Case Design & Execution</span>
+                <span class="badge test" onclick="showTechDetail('bugtracking', this)">Bug Tracking & Reporting</span>
+                <span class="badge test" onclick="showTechDetail('logic', this)">Logic Verification & CNF</span>
+                <span class="badge test" onclick="showTechDetail('api', this)">API Testing Basics</span>
+            </div>
+
+            <!-- Dynamic Detail Panel -->
+            <div id="tech-panel" class="tech-detail-panel">
+                <div class="tech-detail-header">
+                    <span id="tech-title" class="tech-detail-title">C# / .NET</span>
+                    <span id="tech-cat" class="tech-detail-category">Development Technology</span>
+                </div>
+                <p id="tech-desc" class="tech-detail-desc">
+                    Utilized for enterprise backend architecture, application development, and building logic
+                    verification systems. Proficient in object-oriented structures, Visual Studio IDE, .NET frameworks,
+                    and integrating desktop/web applications with SQL databases.
+                </p>
+            </div>
+        </section>
+
+        <!-- Works & Projects Section -->
+        <section id="works">
+            <h2 class="section-title">Featured Works</h2>
+            <div class="grid">
+                <!-- LangSphere Card -->
+                <div class="card" style="grid-column: 1 / -1;">
+                    <div class="project-screenshot">
+                        <img src="langsphere_screenshot.png" alt="LangSphere Homepage Screenshot" loading="lazy">
+                        <div class="project-screenshot-overlay"></div>
+                    </div>
+                    <div>
+                        <h3>LangSphere</h3>
+                        <div class="subtitle">Programming Language Intelligence Platform</div>
+                        <p>A HUD-themed, sci-fi inspired web platform for exploring and comparing programming languages.
+                            Features a dynamic search and filter system with category tabs, letting users lock onto
+                            languages by name, creator, paradigm, or feature — surfacing specs, syntax, and
+                            combat-ready metrics in an immersive grid interface.</p>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 1rem; margin-top: 0.5rem;">
+                        <div class="tags">
+                            <span class="tag">HTML / CSS / JS</span>
+                            <span class="tag">Interactive UI</span>
+                            <span class="tag">Search & Filter</span>
+                            <span class="tag">Sci-Fi Design</span>
+                            <span class="tag">Vercel</span>
+                        </div>
+                        <a href="https://langsphere.vercel.app" target="_blank" rel="noopener noreferrer" class="live-link">⚡ View Live ↗</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <div>
+                        <h3>Automated Testing & QA Framework</h3>
+                        <div class="subtitle">Software Quality Engineering</div>
+                        <p>Designed and executed automated test scripts to validate core business functionality, edge
+                            cases, and performance regressions across application workflows.</p>
+                    </div>
+                    <div class="tags">
+                        <span class="tag">Automation</span>
+                        <span class="tag">QA</span>
+                        <span class="tag">Test Suite</span>
+                    </div>
+                </div>
+                <div class="card">
+                    <div>
+                        <h3>Full-Stack Software Module</h3>
+                        <div class="subtitle">Software Development</div>
+                        <p>Architected and developed a full-stack module integrating structured backend services,
+                            efficient relational database schemas, and a responsive web interface.</p>
+                    </div>
+                    <div class="tags">
+                        <span class="tag">Full-Stack</span>
+                        <span class="tag">SQL</span>
+                        <span class="tag">Backend</span>
+                    </div>
+                </div>
+                <div class="card">
+                    <div>
+                        <h3>Symbolic Logic Verification Tool</h3>
+                        <div class="subtitle">Algorithm & Logic Module</div>
+                        <p>Implemented rule-based logic algorithms utilizing First-Order Predicate Logic and Conjunctive
+                            Normal Form (CNF) for automated validation and system checking.</p>
+                    </div>
+                    <div class="tags">
+                        <span class="tag">C#</span>
+                        <span class="tag">Logic Engines</span>
+                        <span class="tag">CNF</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact">
+            <h2 class="section-title">Get In Touch</h2>
+            <p style="color: var(--text-muted); margin-bottom: 2rem; max-width: 600px;">
+                Open to Software Development and SDET / Testing opportunities. Feel free to connect via email or my
+                professional profiles below.
+            </p>
+            <div class="btn-group">
+                <a href="mailto:abhimaneu.r.nair.arn@gmail.com" class="btn">Email Me</a>
+                <a href="https://linkedin.com/in/abhimaneu-r-nair-arn" target="_blank" rel="noopener noreferrer"
+                    class="btn1">LinkedIn Profile</a>
+                <a href="https://github.com/abhimaneu-r-nair-arn" target="_blank" rel="noopener noreferrer"
+                    class="btn2">GitHub Repository</a>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <p>© 2026 Abhimaneu R Nair | Engineered with HTML, CSS & JS</p>
+        </footer>
+
+    </div>
+
+    <!-- Interactive Logic Script -->
+    <script>
+        // Toggle Academic Course Detail Drawers (Exclusive / Accordion logic)
+        function toggleCourse(detailsId, cardElement) {
+            const detailsDiv = document.getElementById(detailsId);
+            const isOpen = detailsDiv.classList.contains('open');
+
+            // 1. Close all open course detail sections across the section
+            document.querySelectorAll('.course-details').forEach(div => {
+                div.classList.remove('open');
+            });
+
+            // 2. Reset all hint text and chevrons back to default collapsed state
+            document.querySelectorAll('#academics .card').forEach(card => {
+                const hintText = card.querySelector('.hint-text');
+                const chevron = card.querySelector('.chevron');
+                if (hintText) hintText.textContent = 'Click for course syllabus & modules';
+                if (chevron) chevron.textContent = '▼';
+            });
+
+            // 3. If the clicked drawer was not open previously, open it exclusively
+            if (!isOpen) {
+                detailsDiv.classList.add('open');
+                const hintText = cardElement.querySelector('.hint-text');
+                const chevron = cardElement.querySelector('.chevron');
+                if (hintText) hintText.textContent = 'Click to collapse details';
+                if (chevron) chevron.textContent = '▲';
+            }
+        }
+
+        // Technology Detail Content Database
+        const techData = {
+            csharp: {
+                title: "C# / .NET",
+                category: "Software Development",
+                borderColor: "var(--accent-blue)",
+                desc: "Utilized for enterprise backend architecture, application development, and building logic verification engines. Proficient in object-oriented structures, Visual Studio IDE, .NET frameworks, and integrating backend applications seamlessly with relational SQL databases."
+            },
+            java: {
+                title: "Java",
+                category: "Software Development",
+                borderColor: "var(--accent-blue)",
+                desc: "Core expertise in object-oriented programming (OOP), data structures, and multi-threaded applications. Applied in academic coursework and foundational software engineering to build robust, platform-independent backend components."
+            },
+            python: {
+                title: "Python",
+                category: "Software Development",
+                borderColor: "var(--accent-blue)",
+                desc: "Applied for rapid prototyping, utility scripting, algorithmic problem solving, and automated test scenario generation. Experienced with clean syntax scripting and data structure manipulation."
+            },
+            webdev: {
+                title: "HTML5 / CSS3 / JavaScript",
+                category: "Frontend Development",
+                borderColor: "var(--accent-blue)",
+                desc: "Building clean, modern, and responsive user interfaces. Focused on glassmorphism visual designs, flexbox/grid architecture, DOM manipulation, and smooth micro-interactions without reliance on heavy framework bloat."
+            },
+            sql: {
+                title: "SQL & Database Management",
+                category: "Data Architecture",
+                borderColor: "var(--accent-blue)",
+                desc: "Designing and querying relational databases (RDBMS). Experienced in writing complex multi-table JOINs, aggregate queries, table schema normalization, primary/foreign key relationships, and data integrity enforcement."
+            },
+            oop: {
+                title: "Object-Oriented Programming (OOP)",
+                category: "Software Design",
+                borderColor: "var(--accent-blue)",
+                desc: "Strong foundation in software design principles: Encapsulation, Inheritance, Polymorphism, and Abstraction. Applied across C# and Java to create clean, maintainable, modular, and reusable software components."
+            },
+            git: {
+                title: "Git & Version Control",
+                category: "DevOps & Tools",
+                borderColor: "var(--accent-blue)",
+                desc: "Managing code repositories via GitHub. Experienced with repository initialization, commit hygiene, branch management, pull requests, and collaborative code revision tracking."
+            },
+            stlc: {
+                title: "Software Testing Life Cycle (STLC)",
+                category: "Quality Assurance",
+                borderColor: "var(--accent-green)",
+                desc: "Structured execution of all testing phases: Requirement Analysis, Test Planning, Test Case Development, Test Environment Setup, Test Execution, and Test Cycle Closure reporting."
+            },
+            automation: {
+                title: "Test Automation",
+                category: "Quality Engineering",
+                borderColor: "var(--accent-green)",
+                desc: "Writing automated scripts to perform regression testing, validate workflow accuracy, and reduce manual verification overhead. Focused on reliable assertion checks and repeatable test suite execution."
+            },
+            manual: {
+                title: "Manual & Functional Testing",
+                category: "Quality Assurance",
+                borderColor: "var(--accent-green)",
+                desc: "Systematic validation of software requirements, user journeys, edge cases, boundary conditions, and cross-browser responsiveness through exploratory and structured manual testing."
+            },
+            testcases: {
+                title: "Test Case Design & Execution",
+                category: "Quality Assurance",
+                borderColor: "var(--accent-green)",
+                desc: "Authoring comprehensive, positive and negative test cases with clear preconditions, action steps, expected results, and actual result logging to achieve maximum requirement coverage."
+            },
+            bugtracking: {
+                title: "Bug Tracking & Reporting",
+                category: "Quality Assurance",
+                borderColor: "var(--accent-green)",
+                desc: "Documenting defect lifecycles with detailed steps to reproduce, clear environment parameters, severity/priority tagging, screenshots/logs, and verification of bug fixes."
+            },
+            logic: {
+                title: "Logic Verification & CNF",
+                category: "Computer Science Logic",
+                borderColor: "var(--accent-green)",
+                desc: "Application of First-Order Predicate Logic, Resolution Refutation, and Conjunctive Normal Form (CNF) conversions to systematically verify system constraints and automated rule engines."
+            },
+            api: {
+                title: "API Testing Basics",
+                category: "Quality Engineering",
+                borderColor: "var(--accent-green)",
+                desc: "Validating RESTful endpoints using tools like Postman. Inspecting HTTP response codes (200, 400, 500 series), JSON payload structures, request headers, and data transfer accuracy."
+            }
+        };
+
+        // Show Selected Technology in Interactive Panel
+        function showTechDetail(key, element) {
+            const data = techData[key];
+            if (!data) return;
+
+            // Update badge visual states
+            document.querySelectorAll('.badge').forEach(b => b.classList.remove('active'));
+            element.classList.add('active');
+
+            // Update Panel Content
+            const panel = document.getElementById('tech-panel');
+            const title = document.getElementById('tech-title');
+            const cat = document.getElementById('tech-cat');
+            const desc = document.getElementById('tech-desc');
+
+            panel.style.borderLeftColor = data.borderColor;
+            title.textContent = data.title;
+            title.style.color = data.borderColor;
+            cat.textContent = data.category;
+            desc.textContent = data.desc;
+        }
+    </script>
+
+</body>
+
+</html>
