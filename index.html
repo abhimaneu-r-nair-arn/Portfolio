@@ -6,28 +6,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Abhimaneu R Nair | Software Developer & Tester</title>
     <link rel="icon" type="image/png" href="ARN_logo.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        /* Corporate Tech Palette */
+        /* Neon editorial palette */
         :root {
-            --bg-main: #0b0f19;
-            --bg-card: #111827;
-            --bg-card-hover: #1f2937;
-            --nav-bg: rgba(11, 15, 25, 0.85);
-            --border-color: #1f2937;
-            --border-glow: #374151;
+            --bg-main: #10130f;
+            --bg-card: #171c14;
+            --bg-card-hover: #20291a;
+            --nav-bg: rgba(16, 19, 15, 0.88);
+            --border-color: #303a27;
+            --border-glow: #607442;
 
-            /* Accent Palette */
-            --accent-blue: #38bdf8;
-            --accent-green: #34d399;
-            --accent-purple: #c084fc;
-            --accent-orange: #fbbf24;
+            --accent-blue: #d7ff4f;
+            --accent-green: #ff705f;
+            --accent-purple: #d7ff4f;
+            --accent-orange: #ff705f;
 
-            --text-main: #f3f4f6;
-            --text-muted: #9ca3af;
-            --text-subtle: #6b7280;
+            --text-main: #f5f7eb;
+            --text-muted: #b6bea9;
+            --text-subtle: #7d876f;
 
-            --font-body: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+            --font-body: 'Space Grotesk', sans-serif;
+            --font-mono: 'IBM Plex Mono', monospace;
         }
 
         * {
@@ -39,10 +41,22 @@
 
         body {
             background-color: var(--bg-main);
+            background-image: radial-gradient(circle at 85% 8%, rgba(215, 255, 79, 0.12), transparent 24rem), linear-gradient(135deg, transparent 0 48%, rgba(255, 112, 95, 0.035) 48% 52%, transparent 52%);
             color: var(--text-main);
             font-family: var(--font-body);
             line-height: 1.6;
             -webkit-font-smoothing: antialiased;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            opacity: 0.18;
+            background-image: linear-gradient(rgba(215, 255, 79, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(215, 255, 79, 0.05) 1px, transparent 1px);
+            background-size: 42px 42px;
+            mask-image: linear-gradient(to bottom, black, transparent 72%);
         }
 
         .container {
@@ -58,7 +72,7 @@
             background: var(--nav-bg);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
-            border-bottom: 1px solid var(--border-color);
+            border-bottom: 1px solid rgba(215, 255, 79, 0.2);
             z-index: 100;
         }
 
@@ -74,7 +88,8 @@
             font-size: 1.1rem;
             font-weight: 700;
             color: var(--accent-orange);
-            letter-spacing: -0.5px;
+            letter-spacing: 0;
+            text-transform: uppercase;
         }
 
         .logo span {
@@ -96,11 +111,13 @@
             text-decoration: none;
             font-size: 0.9rem;
             font-weight: 500;
-            transition: color 0.2s ease;
+            transition: color 0.2s ease, transform 0.2s ease;
         }
 
-        .nav-links a:hover {
+        .nav-links a:hover,
+        .nav-links a.active {
             color: var(--accent-blue);
+            transform: translateY(-2px);
         }
 
         /* Sections */
@@ -132,6 +149,10 @@
         /* Hero Section */
         .hero {
             padding: 6rem 0 5rem 0;
+            min-height: 72vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
 
         .hero-badge {
@@ -161,14 +182,15 @@
             font-weight: 800;
             color: #ffffff;
             line-height: 1.15;
-            letter-spacing: -1px;
+            letter-spacing: -2px;
             margin-bottom: 0.75rem;
         }
 
         .hero-subtitle {
             font-size: 1.35rem;
             color: var(--accent-blue);
-            font-weight: 500;
+            font-weight: 600;
+            letter-spacing: 0.02em;
             margin-bottom: 1.25rem;
         }
 
@@ -209,6 +231,15 @@
             color: var(--bg-main);
             box-shadow: 0 0 16px rgba(52, 211, 153, 0.3);
             transform: translateY(-2px);
+        }
+
+        .btn:focus-visible,
+        .btn1:focus-visible,
+        .btn2:focus-visible,
+        .nav-links a:focus-visible,
+        .badge:focus-visible {
+            outline: 2px solid var(--accent-blue);
+            outline-offset: 4px;
         }
 
         .btn1 {
@@ -271,7 +302,7 @@
             border: 1px solid var(--border-color);
             border-radius: 8px;
             padding: 1.75rem;
-            transition: all 0.25s ease;
+            transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -286,7 +317,7 @@
             transform: translateY(-4px);
             border-color: var(--border-glow);
             background: var(--bg-card-hover);
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 16px 34px rgba(0, 0, 0, 0.32), 0 0 0 1px rgba(215, 255, 79, 0.08);
         }
 
         .card h3 {
@@ -428,6 +459,22 @@
             transition: all 0.2s ease;
             cursor: pointer;
             user-select: none;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .badge::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(110deg, transparent 25%, rgba(255, 255, 255, 0.2), transparent 75%);
+            transform: translateX(-120%);
+            transition: transform 0.45s ease;
+        }
+
+        .badge:hover::after,
+        .badge.active::after {
+            transform: translateX(120%);
         }
 
         .badge:hover {
@@ -551,6 +598,25 @@
             pointer-events: none;
         }
 
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                scroll-behavior: auto !important;
+                transition-duration: 0.01ms !important;
+                animation-duration: 0.01ms !important;
+            }
+        }
+
         .live-link {
             display: inline-flex;
             align-items: center;
@@ -585,6 +651,31 @@
         }
 
         @media (max-width: 768px) {
+            .container {
+                padding: 0 1rem;
+            }
+
+            .nav-container {
+                height: 62px;
+                gap: 0.75rem;
+            }
+
+            .logo {
+                font-size: 0.85rem;
+                flex-shrink: 0;
+            }
+
+            .nav-links {
+                gap: 0.55rem;
+                justify-content: flex-end;
+                flex-wrap: wrap;
+                line-height: 1.1;
+            }
+
+            .nav-links a {
+                font-size: 0.68rem;
+            }
+
             .hero-h1 {
                 font-size: 2.2rem;
             }
@@ -681,7 +772,7 @@
                             </ul>
                         </div>
                     </div>
-                    <a href="https://macfast.in" target="_blank" rel="noopener noreferrer" class="institution-link"
+                    <a href="https://macfast.org" target="_blank" rel="noopener noreferrer" class="institution-link"
                         onclick="event.stopPropagation();">
                         Visit Institution Website ↗
                     </a>
@@ -1005,6 +1096,47 @@
             cat.textContent = data.category;
             desc.textContent = data.desc;
         }
+
+        // Reveal content as it enters the viewport and keep navigation in sync.
+        const revealItems = document.querySelectorAll('section, .card, .tech-detail-panel');
+        const revealObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.12 });
+
+        revealItems.forEach((item, index) => {
+            item.classList.add('reveal');
+            item.style.transitionDelay = `${Math.min(index * 35, 280)}ms`;
+            if (item.id === 'about') item.classList.add('visible');
+            revealObserver.observe(item);
+        });
+
+        const sectionLinks = [...document.querySelectorAll('.nav-links a')];
+        const sectionObserver = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) return;
+                sectionLinks.forEach(link => {
+                    link.classList.toggle('active', link.getAttribute('href') === `#${entry.target.id}`);
+                });
+            });
+        }, { rootMargin: '-35% 0px -55% 0px' });
+
+        document.querySelectorAll('section[id]').forEach(section => sectionObserver.observe(section));
+
+        document.querySelectorAll('.badge').forEach(badge => {
+            badge.setAttribute('role', 'button');
+            badge.setAttribute('tabindex', '0');
+            badge.addEventListener('keydown', event => {
+                if (event.key === 'Enter' || event.key === ' ') {
+                    event.preventDefault();
+                    badge.click();
+                }
+            });
+        });
     </script>
 
 </body>
