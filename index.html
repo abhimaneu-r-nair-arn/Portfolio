@@ -25,6 +25,8 @@
             --accent-green: #ff705f;
             --accent-purple: #d7ff4f;
             --accent-orange: #ff705f;
+            --accent-saffron: #ff9933;
+            --flag-green: #138808;
 
             --text-main: #f5f7eb;
             --text-muted: #b6bea9;
@@ -89,7 +91,7 @@
             font-family: var(--font-mono);
             font-size: 1.1rem;
             font-weight: 700;
-            color: var(--accent-orange);
+            color: var(--accent-saffron);
             letter-spacing: 0;
             text-transform: uppercase;
         }
@@ -99,7 +101,7 @@
         }
 
         .logo span1 {
-            color: var(--accent-green);
+            color: var(--flag-green);
         }
 
         .nav-links {
@@ -120,6 +122,32 @@
         .nav-links a.active {
             color: var(--accent-blue);
             transform: translateY(-2px);
+        }
+
+        .mobile-menu-toggle {
+            display: none;
+            align-items: center;
+            justify-content: center;
+            gap: 0.45rem;
+            border: 1px solid var(--border-glow);
+            border-radius: 5px;
+            background: rgba(215, 255, 79, 0.08);
+            color: var(--accent-blue);
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 0.5rem 0.65rem;
+            cursor: pointer;
+        }
+
+        .mobile-menu-toggle .menu-icon {
+            font-size: 1rem;
+            line-height: 1;
+        }
+
+        .mobile-menu-toggle[aria-expanded="true"] {
+            background: var(--accent-blue);
+            color: var(--bg-main);
         }
 
         /* Sections */
@@ -315,6 +343,36 @@
             cursor: pointer;
         }
 
+        .academic-profile {
+            border-top: 3px solid var(--accent-blue);
+        }
+
+        .academic-profile:nth-child(2) {
+            border-top-color: var(--accent-green);
+        }
+
+        .profile-mark {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 3.2rem;
+            height: 2rem;
+            padding: 0 0.55rem;
+            margin-bottom: 0.9rem;
+            border: 1px solid var(--border-glow);
+            border-radius: 5px;
+            color: var(--accent-blue);
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+        }
+
+        .academic-profile:nth-child(2) .profile-mark {
+            color: var(--accent-green);
+            border-color: var(--accent-green);
+        }
+
         .card:hover {
             transform: translateY(-4px);
             border-color: var(--border-glow);
@@ -390,7 +448,7 @@
         }
 
         .course-details.open {
-            max-height: 400px;
+            max-height: 600px;
             margin-top: 1rem;
             padding: 1rem;
             border-width: 1px;
@@ -512,13 +570,23 @@
 
         /* Dynamic Skill Detail Display Panel */
         .tech-detail-panel {
-            margin-top: 2rem;
+            margin-top: 1rem;
             background: var(--bg-card);
             border: 1px solid var(--border-glow);
             border-left: 4px solid var(--accent-blue);
             border-radius: 8px;
             padding: 1.5rem;
             transition: all 0.3s ease;
+        }
+
+        .skills-flex + .tech-detail-panel {
+            margin-bottom: 1.5rem;
+        }
+
+        .tech-detail-panel.inline {
+            flex-basis: 100%;
+            width: 100%;
+            margin: 0.5rem 0 1rem;
         }
 
         .tech-detail-header {
@@ -646,6 +714,176 @@
             transform: translateY(-1px);
         }
 
+        .project-details {
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .project-details h4 {
+            color: var(--accent-green);
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.8rem;
+            text-transform: uppercase;
+        }
+
+        .project-feature-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+            list-style: none;
+        }
+
+        .project-feature {
+            background: rgba(215, 255, 79, 0.06);
+            border: 1px solid rgba(215, 255, 79, 0.3);
+            color: var(--accent-blue);
+            font-family: var(--font-mono);
+            font-size: 0.78rem;
+            padding: 0.45rem 0.7rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .project-feature:hover,
+        .project-feature.active {
+            background: rgba(215, 255, 79, 0.18);
+            border-color: var(--accent-blue);
+            box-shadow: 0 0 10px rgba(215, 255, 79, 0.14);
+            transform: translateY(-2px);
+        }
+
+        .project-detail-panel {
+            margin-top: 1rem;
+            background: rgba(11, 15, 25, 0.6);
+            border: 1px solid var(--border-color);
+            border-left: 4px solid var(--accent-green);
+            border-radius: 6px;
+            padding: 1rem;
+        }
+
+        .project-detail-title {
+            color: var(--accent-green);
+            font-family: var(--font-mono);
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 0.35rem;
+        }
+
+        .project-detail-desc {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .academic-modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 200;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            background: rgba(8, 11, 8, 0.86);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            overflow-y: auto;
+        }
+
+        .academic-modal.open {
+            display: flex;
+        }
+
+        .academic-modal-card {
+            width: min(760px, 100%);
+            max-height: calc(100dvh - 2rem);
+            overflow-y: auto;
+            position: relative;
+            background: var(--bg-card);
+            border: 1px solid var(--border-glow);
+            border-top: 4px solid var(--accent-blue);
+            border-radius: 8px;
+            padding: clamp(1.25rem, 3vw, 2.25rem);
+            box-shadow: 0 24px 70px rgba(0, 0, 0, 0.55);
+        }
+
+        .academic-modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            width: 2.25rem;
+            height: 2.25rem;
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+            background: rgba(255, 255, 255, 0.04);
+            color: var(--text-main);
+            font-family: var(--font-mono);
+            font-size: 1.3rem;
+            line-height: 1;
+            cursor: pointer;
+            transition: background 0.2s ease, border-color 0.2s ease;
+        }
+
+        .academic-modal-close:hover,
+        .academic-modal-close:focus-visible {
+            background: var(--accent-blue);
+            border-color: var(--accent-blue);
+            color: var(--bg-main);
+        }
+
+        .academic-modal-kicker {
+            color: var(--accent-blue);
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            margin-bottom: 0.8rem;
+            text-transform: uppercase;
+        }
+
+        .academic-modal h2 {
+            color: #ffffff;
+            font-size: clamp(1.5rem, 3.5vw, 2.1rem);
+            line-height: 1.2;
+            margin-bottom: 0.5rem;
+            padding-right: 3rem;
+        }
+
+        .academic-modal-institution {
+            color: var(--accent-blue);
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 1.25rem;
+        }
+
+        .academic-modal-summary {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            max-width: 720px;
+            margin-bottom: 1.15rem;
+        }
+
+        .academic-modal .course-details {
+            max-height: none;
+            margin-top: 0;
+            padding: 1rem;
+            border: 1px solid var(--border-color);
+            background: rgba(11, 15, 25, 0.6);
+        }
+
+        .academic-modal .course-details ul li {
+            font-size: 0.84rem;
+            line-height: 1.5;
+        }
+
+        body.modal-open {
+            overflow: hidden;
+        }
+
         /* Footer */
         footer {
             text-align: center;
@@ -671,14 +909,38 @@
             }
 
             .nav-links {
-                gap: 0.55rem;
-                justify-content: flex-end;
-                flex-wrap: wrap;
-                line-height: 1.1;
+                display: none;
+                position: absolute;
+                top: calc(100% + 0.5rem);
+                right: 1rem;
+                left: 1rem;
+                flex-direction: column;
+                gap: 0;
+                padding: 0.4rem;
+                background: rgba(23, 28, 20, 0.98);
+                border: 1px solid var(--border-glow);
+                border-radius: 7px;
+                box-shadow: 0 18px 35px rgba(0, 0, 0, 0.4);
+            }
+
+            .nav-links.open {
+                display: flex;
+            }
+
+            .nav-links li {
+                width: 100%;
             }
 
             .nav-links a {
-                font-size: 0.68rem;
+                display: block;
+                padding: 0.75rem 0.8rem;
+                font-size: 0.82rem;
+            }
+
+            .nav-links a:hover,
+            .nav-links a.active {
+                transform: none;
+                background: rgba(215, 255, 79, 0.08);
             }
 
             .hero-h1 {
@@ -697,6 +959,54 @@
             section {
                 padding: 3.5rem 0;
             }
+
+            .mobile-menu-toggle {
+                display: inline-flex;
+            }
+
+            .academic-modal {
+                align-items: flex-start;
+                padding: 0.5rem;
+            }
+
+            .academic-modal-card {
+                max-height: calc(100dvh - 1rem);
+                padding: 1.15rem;
+            }
+
+            .academic-modal-close {
+                top: 0.7rem;
+                right: 0.7rem;
+            }
+
+            .academic-modal-kicker {
+                margin-bottom: 0.55rem;
+            }
+
+            .academic-modal-institution {
+                font-size: 0.88rem;
+                line-height: 1.45;
+                margin-bottom: 0.9rem;
+                padding-right: 2.5rem;
+            }
+
+            .academic-modal-summary {
+                font-size: 0.88rem;
+                margin-bottom: 0.9rem;
+            }
+
+            .academic-modal .course-details {
+                padding: 0.85rem;
+            }
+
+            .academic-modal .course-details ul li {
+                font-size: 0.78rem;
+            }
+
+            .academic-modal .institution-link {
+                font-size: 0.75rem;
+                margin-top: 0.9rem;
+            }
         }
     </style>
 </head>
@@ -709,7 +1019,11 @@
             <div class="logo">Abhimaneu<span> R </span>
                 <span1> Nair</span1>
             </div>
-            <ul class="nav-links">
+            <button id="mobile-menu-toggle" class="mobile-menu-toggle" type="button" aria-expanded="false"
+                aria-controls="nav-links" aria-label="Open navigation menu">
+                <span class="menu-icon">☰</span> Menu
+            </button>
+            <ul id="nav-links" class="nav-links">
                 <li><a href="#about">About</a></li>
                 <li><a href="#academics">Academics</a></li>
                 <li><a href="#skills">Skills</a></li>
@@ -743,12 +1057,14 @@
         <section id="academics">
             <h2 class="section-title">Academic Qualifications</h2>
             <p style="color: var(--text-muted); margin-bottom: 1.5rem; font-size: 0.95rem;">
-                Click on any degree card below to toggle detailed coursework & technical focus.
+                Open an academic profile to view its coursework, technical focus, and institution.
             </p>
             <div class="grid">
                 <!-- MCA Card -->
-                <div class="card clickable" onclick="toggleCourse('mca-details', this)">
+                <div class="card clickable academic-profile" role="button" tabindex="0" aria-expanded="false"
+                    aria-controls="academic-modal" onclick="toggleCourse('mca-details', this)">
                     <div>
+                        <span class="profile-mark">MCA</span>
                         <span class="status-pill active">PURSUING</span>
                         <h3>Master of Computer Applications (MCA)</h3>
                         <div class="subtitle">MACFAST (Mar Athanasios College for Advanced Studies Tiruvalla)</div>
@@ -756,8 +1072,7 @@
                             systems, testing methodologies, and algorithmic logic.</p>
 
                         <div class="click-hint">
-                            <span class="chevron">▼</span> <span class="hint-text">Click for course syllabus &
-                                modules</span>
+                            <span class="chevron">↗</span> <span class="hint-text">Click to open full profile</span>
                         </div>
 
                         <!-- Expandable Content -->
@@ -784,8 +1099,10 @@
                 </div>
 
                 <!-- BCA Card -->
-                <div class="card clickable" onclick="toggleCourse('bca-details', this)">
+                <div class="card clickable academic-profile" role="button" tabindex="0" aria-expanded="false"
+                    aria-controls="academic-modal" onclick="toggleCourse('bca-details', this)">
                     <div>
+                        <span class="profile-mark">BCA</span>
                         <span class="status-pill completed">COMPLETED</span>
                         <h3>Bachelor of Computer Applications (BCA)</h3>
                         <div class="subtitle">University Institute of Technology (UIT), Adoor</div>
@@ -793,8 +1110,7 @@
                             programming, data structures, relational databases, and core web technologies.</p>
 
                         <div class="click-hint">
-                            <span class="chevron">▼</span> <span class="hint-text">Click for course syllabus &
-                                modules</span>
+                            <span class="chevron">↗</span> <span class="hint-text">Click to open full profile</span>
                         </div>
 
                         <!-- Expandable Content -->
@@ -821,6 +1137,22 @@
                 </div>
             </div>
         </section>
+
+        <div id="academic-modal" class="academic-modal" role="dialog" aria-modal="true"
+            aria-labelledby="academic-modal-title" aria-hidden="true">
+            <div class="academic-modal-card">
+                <button id="academic-modal-close" class="academic-modal-close" type="button"
+                    aria-label="Close academic profile" title="Close profile">×</button>
+                <div id="academic-modal-kicker" class="academic-modal-kicker">Academic Profile</div>
+                <span id="academic-modal-status" class="status-pill active">PURSUING</span>
+                <h2 id="academic-modal-title">Master of Computer Applications (MCA)</h2>
+                <p id="academic-modal-institution" class="academic-modal-institution"></p>
+                <p id="academic-modal-summary" class="academic-modal-summary"></p>
+                <div id="academic-modal-details" class="course-details"></div>
+                <a id="academic-modal-link" class="institution-link" href="#" target="_blank"
+                    rel="noopener noreferrer">Visit Institution Website ↗</a>
+            </div>
+        </div>
 
         <!-- Skills Section -->
         <section id="skills">
@@ -886,6 +1218,23 @@
                             languages by name, creator, paradigm, or feature — surfacing specs, syntax, and
                             combat-ready metrics in an immersive grid interface.</p>
                     </div>
+                    <div class="project-details">
+                        <h4>Build Details</h4>
+                        <div class="project-feature-list" aria-label="LangSphere technologies and features">
+                            <button class="project-feature active" type="button" onclick="showProjectDetail('html', this)">HTML5</button>
+                            <button class="project-feature" type="button" onclick="showProjectDetail('css', this)">CSS3</button>
+                            <button class="project-feature" type="button" onclick="showProjectDetail('javascript', this)">JavaScript</button>
+                            <button class="project-feature" type="button" onclick="showProjectDetail('search', this)">Search &amp; Filter</button>
+                            <button class="project-feature" type="button" onclick="showProjectDetail('categories', this)">Category Tabs</button>
+                            <button class="project-feature" type="button" onclick="showProjectDetail('responsive', this)">Responsive UI</button>
+                            <button class="project-feature" type="button" onclick="showProjectDetail('usage', this)">Platform Use</button>
+                            <button class="project-feature" type="button" onclick="showProjectDetail('deployment', this)">Vercel Deployment</button>
+                        </div>
+                        <div class="project-detail-panel" aria-live="polite">
+                            <div id="project-detail-title" class="project-detail-title">HTML5</div>
+                            <p id="project-detail-desc" class="project-detail-desc">Structured the platform with semantic sections for language profiles, comparison content, navigation, and accessible interactive controls.</p>
+                        </div>
+                    </div>
                     <div
                         style="display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 1rem; margin-top: 0.5rem;">
                         <div class="tags">
@@ -927,33 +1276,75 @@
 
     <!-- Interactive Logic Script -->
     <script>
-        // Toggle Academic Course Detail Drawers (Exclusive / Accordion logic)
+        let activeAcademicProfile = null;
+
         function toggleCourse(detailsId, cardElement) {
             const detailsDiv = document.getElementById(detailsId);
-            const isOpen = detailsDiv.classList.contains('open');
+            const modal = document.getElementById('academic-modal');
+            const status = cardElement.querySelector('.status-pill');
+            const institution = cardElement.querySelector('.institution-link');
 
-            // 1. Close all open course detail sections across the section
-            document.querySelectorAll('.course-details').forEach(div => {
-                div.classList.remove('open');
-            });
+            document.getElementById('academic-modal-kicker').textContent = cardElement.querySelector('.profile-mark').textContent;
+            document.getElementById('academic-modal-status').className = `status-pill ${status.classList.contains('completed') ? 'completed' : 'active'}`;
+            document.getElementById('academic-modal-status').textContent = status.textContent;
+            document.getElementById('academic-modal-title').textContent = cardElement.querySelector('h3').textContent;
+            document.getElementById('academic-modal-institution').textContent = cardElement.querySelector('.subtitle').textContent;
+            document.getElementById('academic-modal-summary').textContent = cardElement.querySelector('p').textContent;
+            document.getElementById('academic-modal-details').innerHTML = detailsDiv.innerHTML;
+            document.getElementById('academic-modal-link').href = institution.href;
 
-            // 2. Reset all hint text and chevrons back to default collapsed state
-            document.querySelectorAll('#academics .card').forEach(card => {
-                const hintText = card.querySelector('.hint-text');
-                const chevron = card.querySelector('.chevron');
-                if (hintText) hintText.textContent = 'Click for course syllabus & modules';
-                if (chevron) chevron.textContent = '▼';
-            });
+            cardElement.setAttribute('aria-expanded', 'true');
+            activeAcademicProfile = cardElement;
+            modal.classList.add('open');
+            modal.setAttribute('aria-hidden', 'false');
+            document.body.classList.add('modal-open');
+            document.getElementById('academic-modal-close').focus();
+        }
 
-            // 3. If the clicked drawer was not open previously, open it exclusively
-            if (!isOpen) {
-                detailsDiv.classList.add('open');
-                const hintText = cardElement.querySelector('.hint-text');
-                const chevron = cardElement.querySelector('.chevron');
-                if (hintText) hintText.textContent = 'Click to collapse details';
-                if (chevron) chevron.textContent = '▲';
+        function closeAcademicProfile() {
+            const modal = document.getElementById('academic-modal');
+            modal.classList.remove('open');
+            modal.setAttribute('aria-hidden', 'true');
+            document.body.classList.remove('modal-open');
+            if (activeAcademicProfile) {
+                activeAcademicProfile.setAttribute('aria-expanded', 'false');
+                activeAcademicProfile.focus();
+                activeAcademicProfile = null;
             }
         }
+
+        document.getElementById('academic-modal-close').addEventListener('click', closeAcademicProfile);
+        document.getElementById('academic-modal').addEventListener('click', event => {
+            if (event.target.id === 'academic-modal') closeAcademicProfile();
+        });
+        document.addEventListener('keydown', event => {
+            if (event.key === 'Escape' && document.getElementById('academic-modal').classList.contains('open')) {
+                closeAcademicProfile();
+            }
+        });
+
+        const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+        const mobileNavLinks = document.getElementById('nav-links');
+
+        function closeMobileMenu() {
+            mobileNavLinks.classList.remove('open');
+            mobileMenuToggle.setAttribute('aria-expanded', 'false');
+            mobileMenuToggle.setAttribute('aria-label', 'Open navigation menu');
+        }
+
+        mobileMenuToggle.addEventListener('click', () => {
+            const isOpen = mobileNavLinks.classList.toggle('open');
+            mobileMenuToggle.setAttribute('aria-expanded', String(isOpen));
+            mobileMenuToggle.setAttribute('aria-label', isOpen ? 'Close navigation menu' : 'Open navigation menu');
+        });
+
+        mobileNavLinks.addEventListener('click', event => {
+            if (event.target.closest('a')) closeMobileMenu();
+        });
+
+        document.addEventListener('click', event => {
+            if (!event.target.closest('nav')) closeMobileMenu();
+        });
 
         // Technology Detail Content Database
         const techData = {
@@ -1043,6 +1434,41 @@
             }
         };
 
+        const projectData = {
+            html: {
+                title: 'HTML5',
+                desc: 'Structured the platform with semantic sections for language profiles, comparison content, navigation, and accessible interactive controls.'
+            },
+            css: {
+                title: 'CSS3',
+                desc: 'Created the HUD-inspired visual system with responsive grid layouts, layered panels, state styling, and readable mobile breakpoints.'
+            },
+            javascript: {
+                title: 'JavaScript',
+                desc: 'Powered the client-side language data, live filtering, category switching, result rendering, and interactive search experience.'
+            },
+            search: {
+                title: 'Search & Filter',
+                desc: 'Lets visitors narrow the language library by name, creator, paradigm, or feature while the results update immediately.'
+            },
+            categories: {
+                title: 'Category Tabs',
+                desc: 'Groups languages into focused views so visitors can move quickly between general-purpose, systems, web, and other language categories.'
+            },
+            responsive: {
+                title: 'Responsive UI',
+                desc: 'Adapts the interface from a wide data grid to compact mobile layouts while preserving the primary search and discovery workflow.'
+            },
+            usage: {
+                title: 'Platform Use',
+                desc: 'Visitors can discover a language, inspect its profile, compare it with related options, and use the surfaced syntax and metrics to guide technology choices.'
+            },
+            deployment: {
+                title: 'Vercel Deployment',
+                desc: 'Publishes the static web experience through Vercel for fast delivery, a shareable live URL, and straightforward updates from the project repository.'
+            }
+        };
+
         // Show Selected Technology in Interactive Panel
         function showTechDetail(key, element) {
             const data = techData[key];
@@ -1058,11 +1484,23 @@
             const cat = document.getElementById('tech-cat');
             const desc = document.getElementById('tech-desc');
 
+            element.after(panel);
+            panel.classList.add('inline');
             panel.style.borderLeftColor = data.borderColor;
             title.textContent = data.title;
             title.style.color = data.borderColor;
             cat.textContent = data.category;
             desc.textContent = data.desc;
+        }
+
+        function showProjectDetail(key, element) {
+            const data = projectData[key];
+            if (!data) return;
+
+            document.querySelectorAll('.project-feature').forEach(feature => feature.classList.remove('active'));
+            element.classList.add('active');
+            document.getElementById('project-detail-title').textContent = data.title;
+            document.getElementById('project-detail-desc').textContent = data.desc;
         }
 
         // Reveal content as it enters the viewport and keep navigation in sync.
@@ -1094,6 +1532,15 @@
         }, { rootMargin: '-35% 0px -55% 0px' });
 
         document.querySelectorAll('section[id]').forEach(section => sectionObserver.observe(section));
+
+        document.querySelectorAll('.academic-profile').forEach(profile => {
+            profile.addEventListener('keydown', event => {
+                if (event.key === 'Enter' || event.key === ' ') {
+                    event.preventDefault();
+                    profile.click();
+                }
+            });
+        });
 
         document.querySelectorAll('.badge').forEach(badge => {
             badge.setAttribute('role', 'button');
