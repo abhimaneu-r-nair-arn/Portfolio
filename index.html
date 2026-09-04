@@ -779,6 +779,56 @@
             line-height: 1.6;
         }
 
+        /* Certification documents */
+        .certification-card {
+            min-height: 220px;
+            border-top: 3px solid var(--accent-orange);
+        }
+
+        .certification-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 0.75rem 0 1rem;
+        }
+
+        .certification-meta span {
+            color: var(--text-subtle);
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+        }
+
+        .certification-meta span + span::before {
+            content: '/';
+            color: var(--accent-orange);
+            margin-right: 0.5rem;
+        }
+
+        .certification-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            margin-top: auto;
+            color: var(--accent-orange);
+            font-family: var(--font-mono);
+            font-size: 0.82rem;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .certification-link:hover {
+            color: var(--text-main);
+            text-decoration: underline;
+        }
+
+        .certification-empty {
+            color: var(--text-muted);
+            border: 1px dashed var(--border-glow);
+            padding: 1.25rem;
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+        }
+
         .academic-modal {
             display: none;
             position: fixed;
@@ -1028,6 +1078,7 @@
                 <li><a href="#academics">Academics</a></li>
                 <li><a href="#skills">Skills</a></li>
                 <li><a href="#works">Works</a></li>
+                <li><a href="#certifications">Certifications</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </div>
@@ -1251,6 +1302,15 @@
             </div>
         </section>
 
+        <!-- Certifications Section -->
+        <section id="certifications">
+            <h2 class="section-title">Certifications</h2>
+            <p style="color: var(--text-muted); margin-bottom: 1.5rem; font-size: 0.95rem;">
+                Verify my certifications by opening their documents in a separate browser tab.
+            </p>
+            <div id="certification-list" class="grid" aria-live="polite"></div>
+        </section>
+
         <!-- Contact Section -->
         <section id="contact">
             <h2 class="section-title">Get In Touch</h2>
@@ -1341,6 +1401,121 @@
         mobileNavLinks.addEventListener('click', event => {
             if (event.target.closest('a')) closeMobileMenu();
         });
+
+        const certificationData = [
+            {
+                title: 'AI for BFSI',
+                issuer: 'Abhimaneu R Nair',
+                date: 'Certificate',
+                document: 'certifications/Abhimaneu_Nair_AI_for_BFSI.pdf'
+            },
+            {
+                title: 'Getting Started with Cisco Packet Tracer',
+                issuer: 'Cisco Networking Academy',
+                date: 'Certificate',
+                document: 'certifications/Getting_Started_with_Cisco_Packet_Tracer_certificate_abhimaneu.pdf'
+            },
+            {
+                title: 'Introduction to Cybersecurity',
+                issuer: 'Cisco Networking Academy',
+                date: 'Certificate',
+                document: 'certifications/Introduction_to_Cybersecurity_certificate_ARN.pdf'
+            },
+            {
+                title: 'Introduction to Modern AI',
+                issuer: 'Cisco Networking Academy',
+                date: 'Certificate',
+                document: 'certifications/Introduction_to_Modern_AI_certificate_ARN.pdf'
+            },
+            {
+                title: 'JavaScript Essentials 1',
+                issuer: 'Cisco Networking Academy',
+                date: 'Certificate',
+                document: 'certifications/JavaScript_Essentials_1_certificate_ARN.pdf'
+            },
+            {
+                title: 'Networking Basics',
+                issuer: 'Cisco Networking Academy',
+                date: 'Certificate',
+                document: 'certifications/Networking_Basics_certificate_ARN.pdf'
+            },
+            {
+                title: 'Python Essentials 1',
+                issuer: 'Cisco Networking Academy',
+                date: 'Certificate',
+                document: 'certifications/Python_Essentials_1_certificate_ARN.pdf'
+            },
+            {
+                title: 'Introduction to Cybersecurity',
+                issuer: 'Cisco Networking Academy',
+                date: 'Badge',
+                document: 'certifications/IntrotoCybersecBadge_ARN.pdf'
+            },
+            {
+                title: 'Introduction to Modern AI',
+                issuer: 'Cisco Networking Academy',
+                date: 'Badge',
+                document: 'certifications/IntrotoModernAIBadge_ARN.pdf'
+            },
+            {
+                title: 'JavaScript Essentials 1',
+                issuer: 'Cisco Networking Academy',
+                date: 'Badge',
+                document: 'certifications/JavaScriptEssentials1Badge_ARN.pdf'
+            },
+            {
+                title: 'Networking Basics',
+                issuer: 'Cisco Networking Academy',
+                date: 'Badge',
+                document: 'certifications/NetworkingBasicsBadge_ARN.pdf'
+            },
+            {
+                title: 'Python Essentials 1',
+                issuer: 'Cisco Networking Academy',
+                date: 'Badge',
+                document: 'certifications/PythonEssentials1Badge_ARN.pdf'
+            }
+        ];
+
+        function renderCertificationDocuments() {
+            const list = document.getElementById('certification-list');
+
+            if (!certificationData.length) {
+                list.innerHTML = '<p class="certification-empty">Certification documents will appear here when they are added.</p>';
+                return;
+            }
+
+            certificationData.forEach(certification => {
+                const card = document.createElement('article');
+                card.className = 'card certification-card';
+
+                const content = document.createElement('div');
+                const title = document.createElement('h3');
+                title.textContent = certification.title;
+                const meta = document.createElement('div');
+                meta.className = 'certification-meta';
+
+                [certification.issuer, certification.date].forEach(value => {
+                    const item = document.createElement('span');
+                    item.textContent = value;
+                    meta.appendChild(item);
+                });
+
+                const link = document.createElement('a');
+                link.className = 'certification-link';
+                link.href = certification.document;
+                link.target = '_blank';
+                link.rel = 'noopener noreferrer';
+                link.textContent = 'Open verification document ↗';
+                link.setAttribute('aria-label', `Open ${certification.title} for verification`);
+
+                content.append(title, meta);
+                card.append(content, link);
+                list.appendChild(card);
+            });
+        }
+
+        renderCertificationDocuments();
 
         document.addEventListener('click', event => {
             if (!event.target.closest('nav')) closeMobileMenu();
