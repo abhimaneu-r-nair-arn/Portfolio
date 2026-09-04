@@ -646,6 +646,11 @@
             background: var(--bg-main);
         }
 
+        .project-screenshot:focus-visible {
+            outline: 2px solid var(--accent-blue);
+            outline-offset: 4px;
+        }
+
         .project-screenshot img {
             width: 100%;
             height: 100%;
@@ -1257,10 +1262,11 @@
             <div class="grid">
                 <!-- LangSphere Card -->
                 <div class="card" style="grid-column: 1 / -1;">
-                    <div class="project-screenshot">
+                    <a href="https://langsphere.vercel.app" target="_blank" rel="noopener noreferrer"
+                        class="project-screenshot" aria-label="Open LangSphere live project">
                         <img src="langsphere_screenshot.png" alt="LangSphere Homepage Screenshot" loading="lazy">
                         <div class="project-screenshot-overlay"></div>
-                    </div>
+                    </a>
                     <div>
                         <h3>LangSphere</h3>
                         <div class="subtitle">Programming Language Intelligence Platform</div>
